@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/SpiderStrategies/node-tweet-stream#readme"
-
-    >node-tweet-stream (v2.0.1)</a>
+    <a href="https://github.com/SpiderStrategies/node-tweet-stream#readme">node-tweet-stream (v2.0.1)</a>
 </h1>
 <h4>A twitter module to hook into the public filter streaming, seamlessly updating the tracking keywords.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.node-tweet-stream">module node-tweet-stream</a><ol>
 
@@ -366,7 +359,7 @@
   }
 
   if (!oauth || !oauth.consumer_secret || !oauth.consumer_key || !oauth.token || !oauth.token_secret) {
-    throw new Error(&#x27;Oauth credentials required&#x27;)
+    throw new Error('Oauth credentials required')
   }
   this.oauth = oauth
 
@@ -401,7 +394,7 @@
   // Trying to use the custom `instanceof` for Writable here will also break the
   // Node.js LazyTransform implementation, which has a non-trivial getter for
   // `_writableState` that would lead to infinite recursion.
-  if (!(realHasInstance.call(Writable, this)) &#x26;&#x26;
+  if (!(realHasInstance.call(Writable, this)) &amp;&amp;
       !(this instanceof Stream.Duplex)) {
     return new Writable(options);
   }
@@ -412,10 +405,10 @@
   this.writable = true;
 
   if (options) {
-    if (typeof options.write === &#x27;function&#x27;)
+    if (typeof options.write === 'function')
       this._write = options.write;
 
-    if (typeof options.writev === &#x27;function&#x27;)
+    if (typeof options.writev === 'function')
       this._writev = options.writev;
   }
 
@@ -439,7 +432,7 @@
   }
 
   if (!oauth || !oauth.consumer_secret || !oauth.consumer_key || !oauth.token || !oauth.token_secret) {
-    throw new Error(&#x27;Oauth credentials required&#x27;)
+    throw new Error('Oauth credentials required')
   }
   this.oauth = oauth
 
@@ -479,7 +472,7 @@
   }
 
   if (!oauth || !oauth.consumer_secret || !oauth.consumer_key || !oauth.token || !oauth.token_secret) {
-    throw new Error(&#x27;Oauth credentials required&#x27;)
+    throw new Error('Oauth credentials required')
   }
   this.oauth = oauth
 
@@ -514,7 +507,7 @@
   // Trying to use the custom `instanceof` for Writable here will also break the
   // Node.js LazyTransform implementation, which has a non-trivial getter for
   // `_writableState` that would lead to infinite recursion.
-  if (!(realHasInstance.call(Writable, this)) &#x26;&#x26;
+  if (!(realHasInstance.call(Writable, this)) &amp;&amp;
       !(this instanceof Stream.Duplex)) {
     return new Writable(options);
   }
@@ -525,10 +518,10 @@
   this.writable = true;
 
   if (options) {
-    if (typeof options.write === &#x27;function&#x27;)
+    if (typeof options.write === 'function')
       this._write = options.write;
 
-    if (typeof options.writev === &#x27;function&#x27;)
+    if (typeof options.writev === 'function')
       this._writev = options.writev;
   }
 
@@ -553,21 +546,21 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_write = function (data, encoding, done) {
   if (data.text) {
-    this.emit(&#x27;tweet&#x27;, data)
+    this.emit('tweet', data)
   } else if (data.delete) {
-    this.emit(&#x27;delete&#x27;, data.delete)
+    this.emit('delete', data.delete)
   } else if (data.scrub_geo) {
-    this.emit(&#x27;scrub_geo&#x27;, data.scrub_geo)
+    this.emit('scrub_geo', data.scrub_geo)
   } else if (data.limit) {
-    this.emit(&#x27;limit&#x27;, data.limit)
+    this.emit('limit', data.limit)
   } else if (data.status_withheld) {
-    this.emit(&#x27;status_withheld&#x27;, data.status_withheld)
+    this.emit('status_withheld', data.status_withheld)
   } else if (data.user_withheld) {
-    this.emit(&#x27;user_withheld&#x27;, data.user_withheld)
+    this.emit('user_withheld', data.user_withheld)
   } else if (data.disconnect) {
-    this.emit(&#x27;disconnect&#x27;, data.disconnect)
+    this.emit('disconnect', data.disconnect)
   } else if (data.warning) {
-    this.emit(&#x27;warning&#x27;, data.warning)
+    this.emit('warning', data.warning)
   }
   done()
 }</pre></li>
@@ -607,7 +600,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">addFilter = function (filter, keywords, reconnect) {
-  reconnect = typeof reconnect === &#x27;undefined&#x27; || reconnect
+  reconnect = typeof reconnect === 'undefined' || reconnect
 
   if (!Array.isArray(keywords)) {
     keywords = [keywords]
@@ -624,7 +617,7 @@
     }
   }).bind(this))
 
-  if (reconnect &#x26;&#x26; addedNewKeyword) {
+  if (reconnect &amp;&amp; addedNewKeyword) {
     this.reconnect()
   }
 }</pre></li>
@@ -670,20 +663,20 @@
     url: this.twitterUrl,
     oauth: this.oauth,
     form: {
-      track: Object.keys(this._filters[FILTER_TYPE_TRACKING]).join(&#x27;,&#x27;),
-      locations: Object.keys(this._filters[FILTER_TYPE_LOCATION]).join(&#x27;,&#x27;),
-      follow: Object.keys(this._filters[FILTER_TYPE_FOLLOW]).join(&#x27;,&#x27;),
-      language: Object.keys(this._filters[FILTER_TYPE_LANGUAGE]).join(&#x27;,&#x27;)
+      track: Object.keys(this._filters[FILTER_TYPE_TRACKING]).join(','),
+      locations: Object.keys(this._filters[FILTER_TYPE_LOCATION]).join(','),
+      follow: Object.keys(this._filters[FILTER_TYPE_FOLLOW]).join(','),
+      language: Object.keys(this._filters[FILTER_TYPE_LANGUAGE]).join(',')
     }
   })
 
-  this.once(&#x27;error&#x27;, function (err) {
-    console.log(&#x27;Encountered an unrecoverable error, the stream is abort.&#x27;)
-    console.log(&#x27;  Reason: [&#x27;, err.code, &#x27;]&#x27;, err.explain.long)
-    console.log(&#x27;  Please refer to https://dev.twitter.com/streaming/overview/connecting to debug your request parameters.&#x27;)
+  this.once('error', function (err) {
+    console.log('Encountered an unrecoverable error, the stream is abort.')
+    console.log('  Reason: [', err.code, ']', err.explain.long)
+    console.log('  Please refer to https://dev.twitter.com/streaming/overview/connecting to debug your request parameters.')
   })
 
-  this.stream.on(&#x27;response&#x27;, (function (res) {
+  this.stream.on('response', (function (res) {
     var self = this
     // Rate limited or temporarily unavailable
     if (res.statusCode === 420 || res.statusCode === 503) {
@@ -693,7 +686,7 @@
         self.connect()
       }, backoff)
 
-      this.emit(&#x27;reconnect&#x27;, {
+      this.emit('reconnect', {
         type: this.errorExplanation[res.statusCode].type,
         explain: this.errorExplanation[res.statusCode]
       })
@@ -701,12 +694,12 @@
     }
 
     // Http error
-    if (res.statusCode &#x3e; 200) {
+    if (res.statusCode &gt; 200) {
       this.abort()
 
-      this.emit(&#x27;error&#x27;, {
-        type: &#x27;http&#x27;,
-        err: new Error(&#x27;Twitter connection error &#x27; + res.statusCode),
+      this.emit('error', {
+        type: 'http',
+        err: new Error('Twitter connection error ' + res.statusCode),
         code: res.statusCode,
         explain: this.errorExplanation[res.statusCode]
       })
@@ -716,7 +709,7 @@
     // 200. Alive and well.
     this.backoffs()
 
-    this.emit(&#x27;connect&#x27;)
+    this.emit('connect')
 
     this.parser = split(null, function (d) {
       try {
@@ -728,25 +721,25 @@
     this.parser.pipe(this)
 
     // Handle this: https://dev.twitter.com/docs/streaming-apis/connecting#Stalls
-    // Abort the connection and reconnect if we haven&#x27;t received an update for 90 seconds
+    // Abort the connection and reconnect if we haven't received an update for 90 seconds
     var close = (function () {
       this.abort()
       process.nextTick(this.connect.bind(this))
-      this.emit(&#x27;reconnect&#x27;, {type: &#x27;stall&#x27;})
+      this.emit('reconnect', {type: 'stall'})
     }).bind(this)
 
     this.timeout = setTimeout(close, this.timeoutInterval)
 
-    res.on(&#x27;data&#x27;, function () {
+    res.on('data', function () {
       clearTimeout(self.timeout)
       self.timeout = setTimeout(close, self.timeoutInterval)
     })
   }).bind(this))
 
-  this.stream.on(&#x27;error&#x27;, (function (err) {
+  this.stream.on('error', (function (err) {
     var self = this
     this.abort()
-    this.emit(&#x27;reconnect&#x27;, {type: &#x27;network&#x27;, err: err})
+    this.emit('reconnect', {type: 'network', err: err})
     setTimeout(function () {
       self.connect()
     }, this.networkBackoff())
@@ -795,7 +788,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">hasFilters = function () {
-  return this.tracking().length &#x3e; 0 || this.locations().length &#x3e; 0 || this.following().length &#x3e; 0 || this.languages().length &#x3e; 0
+  return this.tracking().length &gt; 0 || this.locations().length &gt; 0 || this.following().length &gt; 0 || this.languages().length &gt; 0
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -890,9 +883,9 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">removeAllFilters = function (filter, reconnect) {
-  reconnect = typeof reconnect === &#x27;undefined&#x27; || reconnect
+  reconnect = typeof reconnect === 'undefined' || reconnect
 
-  if (typeof this._filters[filter] === &#x27;undefined&#x27;) {
+  if (typeof this._filters[filter] === 'undefined') {
     return
   }
   this._filters[filter] = {};
@@ -914,9 +907,9 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">removeFilter = function (filter, keyword, reconnect) {
-  reconnect = typeof reconnect === &#x27;undefined&#x27; || reconnect
+  reconnect = typeof reconnect === 'undefined' || reconnect
 
-  if (typeof this._filters[filter][keyword] === &#x27;undefined&#x27;) {
+  if (typeof this._filters[filter][keyword] === 'undefined') {
     return
   }
   if (--this._filters[filter][keyword] === 0) {
@@ -943,21 +936,21 @@
   this.addFilter(FILTER_TYPE_TRACKING, keyword, reconnect)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  console.log(&#x27;tweet received&#x27;, tweet)
+  console.log('tweet received', tweet)
 })
 
-t.on(&#x27;error&#x27;, function (err) {
-  console.log(&#x27;Oh no&#x27;)
+t.on('error', function (err) {
+  console.log('Oh no')
 })
 
-t.<span class="apidocCodeKeywordSpan">track</span>(&#x27;nodejs&#x27;)
-t.track(&#x27;pizza&#x27;)
+t.<span class="apidocCodeKeywordSpan">track</span>('nodejs')
+t.track('pizza')
 
 // 5 minutes later
-t.track(&#x27;tacos&#x27;)
+t.track('tacos')
 
 // 10 minutes later
-t.untrack(&#x27;pizza&#x27;)
+t.untrack('pizza')
 ...</pre></li>
     </ul>
 
@@ -1049,14 +1042,14 @@ t.untrack(&#x27;pizza&#x27;)
   this.removeFilter(FILTER_TYPE_TRACKING, keyword, reconnect)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-t.track(&#x27;nodejs&#x27;)
-t.track(&#x27;pizza&#x27;)
+t.track('nodejs')
+t.track('pizza')
 
 // 5 minutes later
-t.track(&#x27;tacos&#x27;)
+t.track('tacos')
 
 // 10 minutes later
-t.<span class="apidocCodeKeywordSpan">untrack</span>(&#x27;pizza&#x27;)
+t.<span class="apidocCodeKeywordSpan">untrack</span>('pizza')
 ```
 
 Watch yourself when updating your tracking keywords. Twitter has [guidelines](https://dev.twitter.com/docs/streaming-apis/connecting
@@ -1097,3 +1090,4 @@ Backoff strategy ripped from https://github.com/benfoxall/tweets/
     ]
 </div>
 </div>
+</body></html>
